@@ -1,13 +1,12 @@
-import '../App.css'
-import LogIn from './LogIn'
+import React from "react";
+import Register from "./Register"; // make sure this file exists
 
 function App() {
-
   return (
-    <>
-      <LogIn />
-    </>
-  )
+    <div>
+      <Register />
+    </div>
+  );
 }
 
-export default App
+export default App;
