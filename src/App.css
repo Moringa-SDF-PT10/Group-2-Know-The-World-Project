@@ -1,0 +1,97 @@
+/* Registration Page CSS */
+.registration-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.registration-container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EDE4E0;
+  padding: 2rem;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.registration-image {
+  width: 60%;
+  background: linear-gradient(rgba(102, 90, 72, 0.7), rgba(102, 90, 72, 0.7)), 
+              url('./Assets/travel-image.avif') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EDE4E0;
+  padding: 2rem;
+}
+
+.image-content {
+  max-width: 500px;
+}
+
+.image-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.image-content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Form Elements */
+.registration-heading {
+  margin: 0;
+  text-align: center;
+  color: #665A48;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.registration-input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #9F8772;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s ease;
+}
+.registration-input:focus {
+  border-color: #665A48;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 90, 72, 0.5);
+}
+.registration-button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #C8DBBE;
+  color: #665A48;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.registration-button:hover {
+  background-color: #9F8772;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
