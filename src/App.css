@@ -29,7 +29,7 @@
 .registration-image {
   width: 60%;
   background: linear-gradient(rgba(102, 90, 72, 0.7), rgba(102, 90, 72, 0.7)), 
-              url('../Assets/photo-1469854523086-cc02fe5d8800.avif') center/cover;
+              url('./Assets/travel-image.avif') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;

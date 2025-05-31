@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function Register() {
+function Registration() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -86,4 +86,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Registration;
