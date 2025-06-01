@@ -10,7 +10,7 @@ import SouthAmerica from "../Assets/SouthAmerica.png";
 function ContinentCard({ continent }) {
 
     let continentImage;
-    let continentURL = continent;
+    let continentURL = continent.replace(" ", "");
 
     switch (continent) {
         case "Africa":
@@ -26,14 +26,12 @@ function ContinentCard({ continent }) {
             continentImage = Europe;
             break;
         case "North America":
-            continentURL = continent.replace(" ", "");
             continentImage = NorthAmerica;
             break;
         case "Oceania":
             continentImage = Oceania;
             break;
         case "South America":
-            continentURL = continent.replace(" ", "");
             continentImage = SouthAmerica;
             break;
     }
