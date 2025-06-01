@@ -21,15 +21,15 @@
   padding: 2.5rem;
   background: #FFFFFF;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
 
 .registration-image {
   width: 60%;
-  background: linear-gradient(rgba(102, 90, 72, 0.7), rgba(102, 90, 72, 0.7)), 
-              url('./Assets/travel-image.avif') center/cover;
+  background: linear-gradient(rgba(102, 90, 72, 0.7), rgba(102, 90, 72, 0.7)),
+    url('./Assets/travel-image.avif') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,11 +71,17 @@
   font-family: 'Open Sans', sans-serif;
   transition: all 0.3s ease;
 }
+
+.registration-input::placeholder {
+  color: #665A48;
+}
+
 .registration-input:focus {
   border-color: #665A48;
   outline: none;
   box-shadow: 0 0 5px rgba(102, 90, 72, 0.5);
 }
+
 .registration-button {
   padding: 0.8rem;
   font-size: 1rem;
@@ -94,4 +100,53 @@
   background-color: #9F8772;
   color: #FFFFFF;
   transform: translateY(-2px);
+}
+
+/* Home page CSS */
+.home-heading {
+  margin: 0;
+  text-align: center;
+  color: #665A48;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.home-paragraph {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #665A48;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.home-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.home-button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #C8DBBE;
+  color: #665A48;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-weight: 600;
+  width: 90%;
+}
+
+.home-continent-image {
+  width: 180px;
+  height: 180px;
 }
