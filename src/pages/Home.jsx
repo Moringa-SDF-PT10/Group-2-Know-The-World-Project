@@ -1,11 +1,25 @@
-import { Link } from "react-router";
+import ContinentCard from "../components/ContinentCard";
 
 function Home() {
+
+    const continents = ["Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"];
+
+    function displayContinents() {
+        return (
+            continents.map(singleContinent => {
+                return <ContinentCard key={singleContinent} continent={singleContinent} />
+            })
+        )
+    }
+
     return (
-        <>
-            <h1>This is Home. 7 Continents are displayed here</h1>
-            <Link to="/continent">View country from 1 continent</Link>
-        </>
+        <main className="home-main">
+            <h1 className="home-heading">Know The World</h1>
+            <p className="home-paragraph">Explore continents, uncover interesting facts and fuel your curiosity. Click on a continent to begin your journey</p>
+            <section style={{ display: "flex" }}>
+                {displayContinents()}
+            </section>
+        </main>
     )
 }
 

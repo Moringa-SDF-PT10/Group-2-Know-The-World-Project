@@ -20,7 +20,7 @@ const routes = [
                 element: <Home />
             },
             {
-                path: "/continent", // :continent
+                path: "/:continent", // :continent
                 element: <AllCountries />
             },
             {
