@@ -16,7 +16,7 @@ function Home() {
         <main className="home-main">
             <h1 className="home-heading">Know The World</h1>
             <p className="home-paragraph">Explore continents, uncover interesting facts and fuel your curiosity. Click on a continent to begin your journey</p>
-            <section style={{ display: "flex" }}>
+            <section className="home-continent-container">
                 {displayContinents()}
             </section>
         </main>
