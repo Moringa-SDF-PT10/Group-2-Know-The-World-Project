@@ -1,5 +1,5 @@
 body {
-    background-color: #EDE4E0;
+  background-color: #EDE4E0;
 }
 
 /* Navbar style */
@@ -11,6 +11,7 @@ nav {
   gap: 2rem;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif;
 }
 
 nav a {
@@ -34,4 +35,3 @@ nav a.active {
   color: #665A48;
   font-weight: 600;
 }
-
