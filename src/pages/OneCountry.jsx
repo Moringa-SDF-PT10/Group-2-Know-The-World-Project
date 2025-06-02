@@ -11,7 +11,7 @@ function OneCountry() {
   useEffect(() => {
     if (!singleCountry) return;
 
-    // Convert "EquatorialGuinea" => "Equatorial Guinea" etc.
+    // Converts countries with more than 1 word eg. "EquatorialGuinea" => "Equatorial Guinea" etc.
     const countryName = decodeURIComponent(singleCountry).replace(
       /([a-z0-9])([A-Z])/g,
       "$1 $2"
