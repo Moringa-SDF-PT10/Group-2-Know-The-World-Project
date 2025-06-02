@@ -1,41 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Reviews from "./Reviews"; 
+import Reviews from "./Reviews";
 
 function OneCountry() {
-  const { continent, singleCountry } = useParams();
+  const { singleCountry } = useParams();
   const [country, setCountry] = useState(null);
   const [error, setError] = useState("");
   const [showReviews, setShowReviews] = useState(false);
+  const [allCountries, setAllCountries] = useState([]);
 
+  // Normalizes names to compare
+  const normalize = (str) =>
+    str.toLowerCase().replace(/[\s'’,-]/g, "").replace(/&/g, "and");
+
+  // Loads all countries once
   useEffect(() => {
-    if (!singleCountry) return;
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then(setAllCountries)
+      .catch((err) => setError("Failed to load country list"));
+  }, []);
 
-    // Converts countries with more than 1 word eg. "EquatorialGuinea" => "Equatorial Guinea" etc.
-    const countryName = decodeURIComponent(singleCountry).replace(
-      /([a-z0-9])([A-Z])/g,
-      "$1 $2"
-    );
+  // When route param changes, this resolves the country name
+  useEffect(() => {
+    if (!singleCountry || allCountries.length === 0) return;
 
-    async function fetchCountry() {
-      try {
-        const res = await fetch(
-          `https://restcountries.com/v3.1/name/${encodeURIComponent(
-            countryName
-          )}?fullText=true`
-        );
-        if (!res.ok) throw new Error("Country not found");
-        const data = await res.json();
-        setCountry(data[0]);
-        setError("");
-      } catch (err) {
-        setError(err.message);
-        setCountry(null);
-      }
+    const match = allCountries.find((c) => {
+      return normalize(c.name.common) === normalize(singleCountry);
+    });
+
+    if (!match) {
+      setError("Country not found");
+      return;
     }
 
-    fetchCountry();
-  }, [singleCountry]);
+    const countryName = match.name.common;
+
+    fetch(
+      `https://restcountries.com/v3.1/name/${encodeURIComponent(
+        countryName
+      )}?fullText=true`
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error("Country not found");
+        return res.json();
+      })
+      .then((data) => {
+        setCountry(data[0]);
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.message);
+        setCountry(null);
+      });
+  }, [singleCountry, allCountries]);
 
   const handleAddToFavourites = () => {
     let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -48,9 +66,7 @@ function OneCountry() {
     }
   };
 
-  const toggleReviews = () => {
-    setShowReviews((prev) => !prev);
-  };
+  const toggleReviews = () => setShowReviews((prev) => !prev);
 
   if (error) return <p>{error}</p>;
   if (!country) return <p>Loading country data...</p>;
@@ -69,9 +85,7 @@ function OneCountry() {
   const countryCode = country.cca2 || "N/A";
   const timezones = country.timezones ? country.timezones.join(", ") : "N/A";
   const demonym =
-    country.demonyms && country.demonyms.eng && country.demonyms.eng.m
-      ? country.demonyms.eng.m
-      : "N/A";
+    country.demonyms?.eng?.m || "N/A";
 
   return (
     <div>
@@ -81,12 +95,8 @@ function OneCountry() {
         alt={`${country.name.common} flag`}
         style={{ width: "150px" }}
       />
-      <p>
-        <strong>Region:</strong> {country.region}
-      </p>
-      <p>
-        🏛 <strong>Capital:</strong> {country.capital ? country.capital[0] : "N/A"}
-      </p>
+      <p><strong>Region:</strong> {country.region}</p>
+      <p>🏛 <strong>Capital:</strong> {country.capital?.[0] || "N/A"}</p>
       <p>👥 <strong>Population:</strong> {country.population.toLocaleString()}</p>
       <p>💰 <strong>Currency:</strong> {currencies}</p>
       <p>🗣️ <strong>Languages:</strong> {languages}</p>
@@ -101,7 +111,7 @@ function OneCountry() {
         {showReviews ? "Hide Reviews" : "Show Reviews"}
       </button>
 
-      {showReviews && <Reviews />}
+      {showReviews && <Reviews countryName={country.name.common} />}
     </div>
   );
 }
