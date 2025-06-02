@@ -309,7 +309,7 @@
 }
 
 .dropdown-section {
-  min-width: 350px;
+  min-width: 380px;
   align-items: center;
   background-color: #EDE4E0;
   border-radius: 12px;
@@ -356,6 +356,14 @@
   align-items: center;
   padding: 0.8rem;
   border-bottom: 1px solid #C8DBBE;
+  min-height: 3rem; 
+}
+
+.dropdown-item span {
+  flex-grow: 1;
+  white-space: nowrap;        
+  max-width: 40%;          
+  padding-right: 1rem;     
 }
 
 .dropdown-item:last-child {
@@ -367,7 +375,7 @@
 }
 
 #but {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   border: none;
   border-radius: 6px;
   font-family: 'Open Sans', sans-serif;
@@ -377,6 +385,7 @@
   margin: 0.2rem;
   font-size: 0.9rem;
   white-space: nowrap;
+   min-width: max-content;   
 }
 
 /* Currently Traveling Button */
@@ -430,8 +439,6 @@
 .buttons .edit-category {
   background-color: #9F8772; /* Earthy brown */
   color: white;
-  
-  border-radius: 6px;
   margin-right: 0.5rem;
   transition: all 0.3s ease;
 }
@@ -445,7 +452,6 @@
 .buttons .delete-btn {
   background-color: #d4a373; /* Light terracotta */
   color: white;
-  border-radius: 6px;
   transition: all 0.3s ease;
 }
 
