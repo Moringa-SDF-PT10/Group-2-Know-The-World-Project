@@ -20,15 +20,15 @@ const routes = [
                 element: <Home />
             },
             {
-                path: "/:continent", // :continent
+                path: "/:continent",
                 element: <AllCountries />
             },
             {
-                path: "/singleCountry", // :singleCountry
+                path: "/:continent/:singleCountry",
                 element: <OneCountry />,
                 children: [
                     {
-                        path: "/singleCountry/reviews",
+                        path: "/:continent/:singleCountry/reviews",
                         element: <Reviews />
                     }
                 ]
