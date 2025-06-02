@@ -302,10 +302,9 @@
 
 .sections-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; 
   gap: 1.5rem;
-  width: fit-content;
-  max-width: 1500px; 
 }
 
 .dropdown-section {
@@ -318,7 +317,7 @@
 }
 
 .dropdown-section.main-section {
-  min-width: 450px;
+  min-width: 500px;
 }
 
 .section-toggle {
