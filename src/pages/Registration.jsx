@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { UserContext } from "../context/UserProvider";
 
 function Registration() {
+  // Using Context to get newly created obj
+  const { users, setUsers } = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -11,24 +15,33 @@ function Registration() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.toLowerCase(),
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const emailExists = users.some(user => user.email.toLowerCase() === formData.email.toLowerCase());
+    const userNameExists = users.some(user => user.username.toLowerCase() === formData.username.toLowerCase());
+
+
+    if (emailExists) {
+      return alert("Email already registered. Please log in.");
+    } else if (userNameExists) {
+      return alert("UserName already registered. Please log in.");
+    }
+
     const newUser = {
       id: uuidv4(),
       ...formData,
     };
 
-    console.log("New user:", newUser); // ✅ Confirm ID and data
-  
+    // Update the localStorage in UserProvider which keeps track of all user created accounts
+    setUsers([...users, newUser]);
 
-    alert("Account created successfully! ✅");
+    alert("Account created successfully!");
 
-    // ✅ Clear input fields
     setFormData({
       username: "",
       email: "",
@@ -77,7 +90,7 @@ function Registration() {
         <div className="image-content">
           <h1>Know the World</h1>
           <p>
-            Join our community of travelers and discover amazing facts about every country. 
+            Join our community of travelers and discover amazing facts about every country.
             Save your favorite destinations and plan your next adventure with us.
           </p>
         </div>
