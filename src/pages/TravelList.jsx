@@ -146,7 +146,7 @@ const TravelList = () => {
       <input
         type="text"
         className="search-bar"
-        placeholder= "       Search countries..."
+        placeholder= " Search countries..."
         value={searchTerm}
         onChange={handleSearch}
       />

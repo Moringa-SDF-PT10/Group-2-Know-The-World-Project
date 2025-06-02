@@ -290,11 +290,7 @@
   border-radius: 6px;
   font-size: 1rem;
   background-color: #978676d2;
-  color: #ffffff;
-  background-image: url('./Assets/search.png'); 
-  background-repeat: no-repeat;
-  background-position: 0.8rem center; 
-  background-size: 1.5rem; 
+  color: #ffffff; 
 }
 .search-bar::placeholder{ color: white;}
 
@@ -313,7 +309,7 @@
 }
 
 .dropdown-section {
-  min-width: 400px;
+  min-width: 350px;
   align-items: center;
   background-color: #EDE4E0;
   border-radius: 12px;
@@ -322,7 +318,7 @@
 }
 
 .dropdown-section.main-section {
-  min-width: 600px;
+  min-width: 500px;
 }
 
 .section-toggle {
@@ -434,7 +430,7 @@
 .buttons .edit-category {
   background-color: #9F8772; /* Earthy brown */
   color: white;
-  padding: 0.5rem 0.8rem;
+  
   border-radius: 6px;
   margin-right: 0.5rem;
   transition: all 0.3s ease;
@@ -449,7 +445,6 @@
 .buttons .delete-btn {
   background-color: #d4a373; /* Light terracotta */
   color: white;
-  padding: 0.5rem 0.8rem;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
