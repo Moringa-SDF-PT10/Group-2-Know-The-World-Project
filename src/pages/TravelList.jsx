@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import earthGlobe from "../Assets/earthGlobe.png"; 
  
 const TravelList = () => {
   const [countries, setCountries] = useState([]);
@@ -71,8 +72,8 @@ const TravelList = () => {
     );
   };
 
-  const Section = ({ title, keyName, data, setData, showAdd }) => (
-    <div className="dropdown-section">
+  const Section = ({ title, keyName, data, setData, showAdd, className }) => (
+    <div className={`dropdown-section ${className || ''}`}>
       <button className="section-toggle" onClick={() => toggleSection(keyName)}>
         {expanded[keyName] ? "▾" : "▸"} {title}
       </button>
@@ -84,14 +85,16 @@ const TravelList = () => {
               <div className="buttons">
                 {showAdd ? (
         <>
-        <button  title="Add to Currently Traveling" onClick={() => addToList(country, setTraveling)}>✈️</button>
-        <button title="Add to Travelled" onClick={() => addToList(country, setTravelled)}> ✅</button>
-        <button title="Add to Wishlist" onClick={() => addToList(country, setWishlist)}> 📝</button>
+        <button id="but" title="Add to Currently Traveling" onClick={() => addToList(country, setTraveling)}>Travelling</button>
+        <button id="but" title="Add to Travelled" onClick={() => addToList(country, setTravelled)}> Travelled</button>
+        <button id="but"  title="Add to Wishlist" onClick={() => addToList(country, setWishlist)}> To Travel </button>
          </>
             ) : (
         <>
      <div className="dropdown-wrapper">
-        <button onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
+        <button 
+         className="edit-category"
+        onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
          ✏️Edit Category </button> 
          {dropdownOpenId === country.name.common && (
            <select  onChange={(e) => {const value = e.target.value;
@@ -122,7 +125,9 @@ const TravelList = () => {
   )}
 </div>
 
-   <button onClick={() => removeFromList(country, setData)}>Delete 🗑️</button>
+   <button
+     className="delete-btn" 
+    onClick={() => removeFromList(country, setData)}>Delete 🗑️</button>
  </>
      )}
     </div>
@@ -135,11 +140,13 @@ const TravelList = () => {
 
   return (
     <div className="travel-page">
-      <h2>🌍 My Travel List</h2>
+      <h2>
+        <img src={earthGlobe} className="globe-image" alt="Globe" />
+        My Travel List</h2>
       <input
         type="text"
         className="search-bar"
-        placeholder="🔍 Search countries..."
+        placeholder= "       Search countries..."
         value={searchTerm}
         onChange={handleSearch}
       />
@@ -150,6 +157,7 @@ const TravelList = () => {
           data={countries}
           setData={setCountries}
           showAdd={true}
+          className="main-section"
         />
         <Section
           title="Currently Traveling"
