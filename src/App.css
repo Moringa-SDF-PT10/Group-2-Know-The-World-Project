@@ -203,7 +203,8 @@
   background: #FFFFFF;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 9%;
+  width: 180px;
+  height: 190px ;
   align-items: center;
 
 }
@@ -438,26 +439,26 @@
 
 /* Edit Category button */
 .buttons .edit-category {
-  background-color: #9F8772; /* Earthy brown */
+  background-color: #9F8772; 
   color: white;
   margin-right: 0.5rem;
   transition: all 0.3s ease;
 }
 
 .buttons .edit-category:hover {
-  background-color: #665A48; /* Darker brown */
+  background-color: #665A48; 
   transform: translateY(-2px);
 }
 
 /* Delete button */
 .buttons .delete-btn {
-  background-color: #d4a373; /* Light terracotta */
+  background-color: #d4a373; 
   color: white;
   transition: all 0.3s ease;
 }
 
 .buttons .delete-btn:hover {
-  background-color: #c08552; /* Darker terracotta */
+  background-color: #c08552; 
   transform: translateY(-2px);
 }
 
@@ -474,4 +475,191 @@
   outline: none;
   border-color: #665A48;
   box-shadow: 0 0 0 2px rgba(102, 90, 72, 0.2);
+}
+
+/* One Country Page Styles */
+.one-country-page {
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #EDE4E0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(102, 90, 72, 0.1);
+  font-family: 'Open Sans', sans-serif;
+  color: #665A48;
+}
+
+.country-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.country-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #665A48;
+  margin-bottom: 1rem;
+}
+
+.country-flag {
+  width: 300px;
+  height: auto;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.country-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.country-detail-item {
+  background-color: #f5f0ec;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #9F8772;
+}
+
+.country-detail-item p {
+  margin: 0.5rem 0;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.country-detail-item strong {
+  color: #665A48;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.action-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.favorite-button {
+  background-color: #9F8772;
+  color: #EDE4E0;
+}
+
+.favorite-button:hover {
+  background-color: #665A48;
+}
+
+.favorite-button.added {
+  background-color: #9dcf85; 
+}
+
+.review-button {
+  background-color: #C8DBBE;
+  color: #665A48;
+}
+
+.review-button:hover {
+  background-color: #9F8772;
+  color: #EDE4E0;
+}
+
+.reviews-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #C8DBBE;
+}
+
+
+/* Favourites Page */
+.favourites-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.favourites-heading {
+  text-align: center;
+  color: #665A48;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.no-favourites {
+  text-align: center;
+  color: #9F8772;
+  font-size: 1.2rem;
+}
+
+.favourites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.favourite-card {
+  background: #EDE4E0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favourite-card:hover {
+  transform: translateY(-5px);
+}
+
+.country-link {
+  text-decoration: none;
+  color: #665A48;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.favourite-flag {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #9F8772;
+  margin-bottom: 1rem;
+}
+
+.remove-btn {
+  background-color: #9F8772;
+  color: #EDE4E0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #665A48;
 }

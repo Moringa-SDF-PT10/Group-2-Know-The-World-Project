@@ -8,6 +8,8 @@ function OneCountry() {
   const [error, setError] = useState("");
   const [showReviews, setShowReviews] = useState(false);
   const [allCountries, setAllCountries] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
+
 
   // Normalizes names to compare
   const normalize = (str) =>
@@ -55,14 +57,25 @@ function OneCountry() {
       });
   }, [singleCountry, allCountries]);
 
+    useEffect(() => {
+    if (country) {
+      const favorites = JSON.parse(localStorage.getItem("favourites")) || [];
+      setIsFavorite(favorites.some(fav => fav.name.common === country.name.common));
+    }
+  }, [country]);
+
   const handleAddToFavourites = () => {
     let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
-    if (!favourites.find((c) => c.name.common === country.name.common)) {
+    if (!isFavorite) {
       favourites.push(country);
       localStorage.setItem("favourites", JSON.stringify(favourites));
+      setIsFavorite(true);
       alert(`${country.name.common} added to favourites!`);
     } else {
-      alert(`${country.name.common} is already in favourites.`);
+      const updatedFavorites = favourites.filter(fav => fav.name.common !== country.name.common);
+      localStorage.setItem("favourites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+      alert(`${country.name.common} removed from favourites!`);
     }
   };
 
@@ -88,13 +101,15 @@ function OneCountry() {
     country.demonyms?.eng?.m || "N/A";
 
   return (
-    <div>
+    <div className="one-country-page">
+    <div className="country-header">
       <h1>{country.name.common}</h1>
       <img
         src={country.flags.png}
         alt={`${country.name.common} flag`}
-        style={{ width: "150px" }}
+        className="country-flag"
       />
+     <div className="country-details">
       <p><strong>Region:</strong> {country.region}</p>
       <p>🏛 <strong>Capital:</strong> {country.capital?.[0] || "N/A"}</p>
       <p>👥 <strong>Population:</strong> {country.population.toLocaleString()}</p>
@@ -104,14 +119,30 @@ function OneCountry() {
       <p>🌐 <strong>Country Code:</strong> {countryCode}</p>
       <p>🕒 <strong>Timezones:</strong> {timezones}</p>
       <p>👤 <strong>Demonym:</strong> {demonym}</p>
+      </div>
 
-      <button onClick={handleAddToFavourites}>❤️ Add to Favourites</button>
-
-      <button onClick={toggleReviews}>
-        {showReviews ? "Hide Reviews" : "Show Reviews"}
+     <div className="action-buttons">
+      <button 
+      onClick={handleAddToFavourites}
+      className={`action-button favorite-button ${isFavorite ? 'added'
+             : ''}`}>
+         {isFavorite ? '❤️ Remove from Favorite' : '❤️ Add to Favorites'}
       </button>
 
-      {showReviews && <Reviews countryName={country.name.common} />}
+      <button 
+      onClick={toggleReviews}
+      className="action-button review-button"
+      >
+        {showReviews ? "Hide Reviews" : "Show Reviews"}
+      </button>
+     </div>
+
+      {showReviews && (
+    <div>
+      <Reviews countryName={country.name.common} />
+    </div>
+  )}
+    </div>
     </div>
   );
 }
