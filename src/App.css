@@ -460,15 +460,10 @@
 }
 
 .dropdown-wrapper select {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  z-index: 10;
   padding: 0.5rem;
   border: 1px solid #9F8772;
   border-radius: 4px;
   background-color: white;
-  min-width: 150px;
   color: #665A48;
   font-family: 'Open Sans', sans-serif;
 }

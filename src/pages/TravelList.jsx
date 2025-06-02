@@ -96,6 +96,7 @@ const TravelList = () => {
          className="edit-category"
         onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
          ✏️Edit Category </button> 
+       <div>
          {dropdownOpenId === country.name.common && (
            <select  onChange={(e) => {const value = e.target.value;
                  if (!value) return;
@@ -123,8 +124,9 @@ const TravelList = () => {
       <option value="wishlist">Wishlist</option>
     </select>
   )}
+  </div>
 </div>
-
+<br></br>
    <button
      className="delete-btn" 
     onClick={() => removeFromList(country, setData)}>Delete 🗑️</button>
