@@ -309,7 +309,7 @@
 }
 
 .dropdown-section {
-  min-width: 380px;
+  min-width: 350px;
   align-items: center;
   background-color: #EDE4E0;
   border-radius: 12px;
@@ -318,7 +318,7 @@
 }
 
 .dropdown-section.main-section {
-  min-width: 500px;
+  min-width: 450px;
 }
 
 .section-toggle {
