@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
  
-// import '../App.css';
-
 const TravelList = () => {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -94,7 +92,7 @@ const TravelList = () => {
         <>
      <div className="dropdown-wrapper">
         <button onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
-         ✏️  </button>
+         ✏️Edit Category </button> 
          {dropdownOpenId === country.name.common && (
            <select  onChange={(e) => {const value = e.target.value;
                  if (!value) return;
