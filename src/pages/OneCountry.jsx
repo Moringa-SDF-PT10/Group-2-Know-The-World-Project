@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Reviews from "./Reviews"; // Import the Reviews component
+import Reviews from "./Reviews"; 
 
 function OneCountry() {
   const { continent, singleCountry } = useParams();
   const [country, setCountry] = useState(null);
   const [error, setError] = useState("");
-  const [showReviews, setShowReviews] = useState(false); // Toggle state
+  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     if (!singleCountry) return;
 
-    const countryName = singleCountry.replace(/-/g, " ");
+    // Convert "EquatorialGuinea" => "Equatorial Guinea" etc.
+    const countryName = decodeURIComponent(singleCountry).replace(
+      /([a-z0-9])([A-Z])/g,
+      "$1 $2"
+    );
 
     async function fetchCountry() {
       try {
         const res = await fetch(
-          `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`
+          `https://restcountries.com/v3.1/name/${encodeURIComponent(
+            countryName
+          )}?fullText=true`
         );
         if (!res.ok) throw new Error("Country not found");
         const data = await res.json();
@@ -33,7 +39,7 @@ function OneCountry() {
 
   const handleAddToFavourites = () => {
     let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
-    if (!favourites.find(c => c.name.common === country.name.common)) {
+    if (!favourites.find((c) => c.name.common === country.name.common)) {
       favourites.push(country);
       localStorage.setItem("favourites", JSON.stringify(favourites));
       alert(`${country.name.common} added to favourites!`);
@@ -43,7 +49,7 @@ function OneCountry() {
   };
 
   const toggleReviews = () => {
-    setShowReviews(prev => !prev);
+    setShowReviews((prev) => !prev);
   };
 
   if (error) return <p>{error}</p>;
@@ -51,7 +57,7 @@ function OneCountry() {
 
   const currencies = country.currencies
     ? Object.values(country.currencies)
-        .map(cur => `${cur.name} (${cur.symbol})`)
+        .map((cur) => `${cur.name} (${cur.symbol})`)
         .join(", ")
     : "N/A";
 
@@ -75,8 +81,12 @@ function OneCountry() {
         alt={`${country.name.common} flag`}
         style={{ width: "150px" }}
       />
-      <p><strong>Region:</strong> {country.region}</p>
-      <p>🏛 <strong>Capital:</strong> {country.capital ? country.capital[0] : "N/A"}</p>
+      <p>
+        <strong>Region:</strong> {country.region}
+      </p>
+      <p>
+        🏛 <strong>Capital:</strong> {country.capital ? country.capital[0] : "N/A"}
+      </p>
       <p>👥 <strong>Population:</strong> {country.population.toLocaleString()}</p>
       <p>💰 <strong>Currency:</strong> {currencies}</p>
       <p>🗣️ <strong>Languages:</strong> {languages}</p>
@@ -88,13 +98,10 @@ function OneCountry() {
       <button onClick={handleAddToFavourites}>❤️ Add to Favourites</button>
 
       <button onClick={toggleReviews}>
-        {showReviews ? "Hide Reviews" : " Reviews"}
+        {showReviews ? "Hide Reviews" : "Show Reviews"}
       </button>
 
       {showReviews && <Reviews />}
-
-   
-      
     </div>
   );
 }
