@@ -37,6 +37,12 @@
   padding: 2rem;
 }
 
+.login-error {
+  text-align: center;
+  color: red;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .image-content {
   max-width: 500px;
 }
