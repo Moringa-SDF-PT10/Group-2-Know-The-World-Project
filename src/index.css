@@ -44,26 +44,3 @@ nav button {
   border: none;
   font-size: 0.9em;
 }
-
-/* .logout-button {
-  background-color: #382d1c;
-  color: #EDE4E0;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  border: none;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.logout-button:hover {
-  background-color: #9F8772;
-  color: white;
-}
-
-.logout-button.active {
-  background-color: #C8DBBE;
-  color: #665A48;
-  font-weight: 600;
-} */
