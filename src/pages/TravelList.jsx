@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import earthGlobe from "../Assets/earthGlobe.png";
 import { useNavigate } from "react-router";
 import { LoginContext } from "../context/LoginStatusProvider";
 
@@ -158,9 +157,7 @@ const TravelList = () => {
 
   return (
     <div className="travel-page">
-      <h2>
-        <img src={earthGlobe} className="globe-image" alt="Globe" />
-        My Travel List</h2>
+      <h2>My Travel List</h2>
       <input
         type="text"
         className="search-bar"
