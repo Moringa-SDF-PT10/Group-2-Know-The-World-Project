@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import earthGlobe from "../Assets/earthGlobe.png"; 
- 
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { LoginContext } from "../context/LoginStatusProvider";
+
 const TravelList = () => {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,6 +10,17 @@ const TravelList = () => {
   const [traveling, setTraveling] = useState([]);
   const [wishlist, setWishlist] = useState([]);
 
+  // Protecting page by ensuring user has logged in
+  const { isLoggedIn } = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+      alert("Login in required")
+    }
+  }, [isLoggedIn])
+
   const [expanded, setExpanded] = useState({
     all: true,
     traveling: true,
@@ -16,7 +28,7 @@ const TravelList = () => {
     wishlist: true,
   });
 
- 
+
   useEffect(() => {
     const fetchCountries = async () => {
       const res = await fetch("https://restcountries.com/v3.1/all?fields=name");
@@ -84,71 +96,72 @@ const TravelList = () => {
               <span>{country.name.common}</span>
               <div className="buttons">
                 {showAdd ? (
-        <>
-        <button id="but" title="Add to Currently Traveling" onClick={() => addToList(country, setTraveling)}>Travelling</button>
-        <button id="but" title="Add to Travelled" onClick={() => addToList(country, setTravelled)}> Travelled</button>
-        <button id="but"  title="Add to Wishlist" onClick={() => addToList(country, setWishlist)}> To Travel </button>
-         </>
-            ) : (
-        <>
-     <div className="dropdown-wrapper">
-        <button 
-         className="edit-category"
-        onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
-         ✏️Edit Category </button> 
-       <div>
-         {dropdownOpenId === country.name.common && (
-           <select  onChange={(e) => {const value = e.target.value;
-                 if (!value) return;
-                 let targetSet;
-                 if (value === "traveling") targetSet = setTraveling;
-                 else if (value === "travelled") targetSet = setTravelled;
-                 else if (value === "wishlist") targetSet = setWishlist;
-                 if (targetSet) { targetSet((prev) => {
-                const exists = prev.find((c) => c.name.common === country.name.common);
-                 if (exists) {alert("Already exists in this category.");
-                   return prev;
-                     }
-                  return [...prev, country];
-                     });
+                  <>
+                    <button id="but" title="Add to Currently Traveling" onClick={() => addToList(country, setTraveling)}>Travelling</button>
+                    <button id="but" title="Add to Travelled" onClick={() => addToList(country, setTravelled)}> Travelled</button>
+                    <button id="but" title="Add to Wishlist" onClick={() => addToList(country, setWishlist)}> To Travel </button>
+                  </>
+                ) : (
+                  <>
+                    <div className="dropdown-wrapper">
+                      <button
+                        className="edit-category"
+                        onClick={() => setDropdownOpenId(dropdownOpenId === country.name.common ? null : country.name.common)} title="Move to another category" >
+                        ✏️Edit Category </button>
+                      <div>
+                        {dropdownOpenId === country.name.common && (
+                          <select onChange={(e) => {
+                            const value = e.target.value;
+                            if (!value) return;
+                            let targetSet;
+                            if (value === "traveling") targetSet = setTraveling;
+                            else if (value === "travelled") targetSet = setTravelled;
+                            else if (value === "wishlist") targetSet = setWishlist;
+                            if (targetSet) {
+                              targetSet((prev) => {
+                                const exists = prev.find((c) => c.name.common === country.name.common);
+                                if (exists) {
+                                  alert("Already exists in this category.");
+                                  return prev;
+                                }
+                                return [...prev, country];
+                              });
 
-          // remove from current list
-     setData((prev) => prev.filter((c) => c.name.common !== country.name.common));
-     setDropdownOpenId(null);
-        }
-      }}
-    >
-      <option value="">Move to...</option>
-      <option value="traveling">Currently Traveling</option>
-      <option value="travelled">Travelled</option>
-      <option value="wishlist">Wishlist</option>
-    </select>
-  )}
-  </div>
-</div>
-<br></br>
-   <button
-     className="delete-btn" 
-    onClick={() => removeFromList(country, setData)}>Delete 🗑️</button>
- </>
-     )}
-    </div>
-     </li>
+                              // remove from current list
+                              setData((prev) => prev.filter((c) => c.name.common !== country.name.common));
+                              setDropdownOpenId(null);
+                            }
+                          }}
+                          >
+                            <option value="">Move to...</option>
+                            <option value="traveling">Currently Traveling</option>
+                            <option value="travelled">Travelled</option>
+                            <option value="wishlist">Wishlist</option>
+                          </select>
+                        )}
+                      </div>
+                    </div>
+                    <br></br>
+                    <button
+                      className="delete-btn"
+                      onClick={() => removeFromList(country, setData)}>Delete 🗑️</button>
+                  </>
+                )}
+              </div>
+            </li>
           ))}
-    </ul>
+        </ul>
       )}
     </div>
   );
 
   return (
     <div className="travel-page">
-      <h2>
-        <img src={earthGlobe} className="globe-image" alt="Globe" />
-        My Travel List</h2>
+      <h2>My Travel List</h2>
       <input
         type="text"
         className="search-bar"
-        placeholder= " Search countries..."
+        placeholder=" Search countries..."
         value={searchTerm}
         onChange={handleSearch}
       />

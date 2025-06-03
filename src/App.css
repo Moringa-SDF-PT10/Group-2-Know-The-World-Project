@@ -120,8 +120,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  max-width: 1500px;
-  margin: 2rem auto;
   padding: 0 1rem;
 }
 
@@ -131,8 +129,7 @@
   color: #665A48;
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 .home-paragraph {
@@ -204,7 +201,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 180px;
-  height: 190px ;
+  height: 190px;
   align-items: center;
 
 }
@@ -251,24 +248,18 @@
   background-color: #9F8772;
   color: #FFFFFF;
   transform: translateY(-2px);
-} 
+}
+
 /* Travel list CSS*/
 .title-container {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.globe-image {
-  width: 3rem; 
-  height: 2.5rem; 
-  object-fit: contain; 
-  margin: 2px; 
-}
 .travel-page {
-  padding: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -280,6 +271,7 @@
 .travel-page h2 {
   text-align: center;
   font-size: 3.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   color: #665A48;
   font-family: 'Playfair Display', serif;
@@ -293,9 +285,12 @@
   border-radius: 6px;
   font-size: 1rem;
   background-color: #978676d2;
-  color: #ffffff; 
+  color: #ffffff;
 }
-.search-bar::placeholder{ color: white;}
+
+.search-bar::placeholder {
+  color: white;
+}
 
 .search-bar:focus {
   outline: none;
@@ -306,7 +301,7 @@
 .sections-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -358,14 +353,14 @@
   align-items: center;
   padding: 0.8rem;
   border-bottom: 1px solid #C8DBBE;
-  min-height: 3rem; 
+  min-height: 3rem;
 }
 
 .dropdown-item span {
   flex-grow: 1;
-  white-space: nowrap;        
-  max-width: 40%;          
-  padding-right: 1rem;     
+  white-space: nowrap;
+  max-width: 40%;
+  padding-right: 1rem;
 }
 
 .dropdown-item:last-child {
@@ -387,7 +382,7 @@
   margin: 0.2rem;
   font-size: 0.9rem;
   white-space: nowrap;
-   min-width: max-content;   
+  min-width: max-content;
 }
 
 /* Currently Traveling Button */
@@ -398,19 +393,19 @@
 
 /* Travelled Button */
 #but:nth-child(2) {
-  background-color: #7a8c69; 
+  background-color: #7a8c69;
   color: black;
 }
 
 /* To Travel (Wishlist) Button */
 #but:nth-child(3) {
-  background-color: #c0dfcc; 
+  background-color: #c0dfcc;
   color: black;
 }
 
 #but:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .buttons {
@@ -439,26 +434,26 @@
 
 /* Edit Category button */
 .buttons .edit-category {
-  background-color: #9F8772; 
+  background-color: #9F8772;
   color: white;
   margin-right: 0.5rem;
   transition: all 0.3s ease;
 }
 
 .buttons .edit-category:hover {
-  background-color: #665A48; 
+  background-color: #665A48;
   transform: translateY(-2px);
 }
 
 /* Delete button */
 .buttons .delete-btn {
-  background-color: #d4a373; 
+  background-color: #d4a373;
   color: white;
   transition: all 0.3s ease;
 }
 
 .buttons .delete-btn:hover {
-  background-color: #c08552; 
+  background-color: #c08552;
   transform: translateY(-2px);
 }
 
@@ -479,7 +474,6 @@
 
 /* One Country Page Styles */
 .one-country-page {
-  margin: 1rem auto;
   padding: 1rem;
   background-color: #EDE4E0;
   border-radius: 12px;
@@ -564,7 +558,7 @@
 }
 
 .favorite-button.added {
-  background-color: #9dcf85; 
+  background-color: #9dcf85;
 }
 
 .review-button {
@@ -586,7 +580,6 @@
 
 /* Favourites Page */
 .favourites-page {
-  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
@@ -596,7 +589,8 @@
   text-align: center;
   color: #665A48;
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 

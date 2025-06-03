@@ -3,7 +3,8 @@ body {
 }
 
 /* Navbar style */
-nav {
+nav,
+nav button {
   background-color: #382d1c;
   padding: 1rem 2rem;
   display: flex;
@@ -14,7 +15,8 @@ nav {
   font-family: 'Open Sans', sans-serif;
 }
 
-nav a {
+nav a,
+nav button {
   color: #EDE4E0;
   text-decoration: none;
   font-weight: 500;
@@ -24,14 +26,21 @@ nav a {
 }
 
 /* Hover effect */
-nav a:hover {
+nav a:hover,
+nav button:hover {
   background-color: #9F8772;
   color: white;
 }
 
 /* Active link (current page) */
-nav a.active {
+nav a.active,
+nav button.active {
   background-color: #C8DBBE;
   color: #665A48;
   font-weight: 600;
+}
+
+nav button {
+  border: none;
+  font-size: 0.9em;
 }

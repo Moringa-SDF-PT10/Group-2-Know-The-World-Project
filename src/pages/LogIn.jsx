@@ -1,12 +1,17 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../context/UserProvider";
+import { LoginContext } from "../context/LoginStatusProvider";
+import { Navigate } from "react-router";
 
 function LogIn() {
     const { users } = useContext(UserContext);
+    const { logIn } = useContext(LoginContext);
 
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const [redirect, setRedirect] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -30,10 +35,16 @@ function LogIn() {
         }
 
         // Login successful
+        logIn();
+        setRedirect(true);
         setError("");
         // onLoginSuccess(user);
         alert("Login successful!");
     };
+
+    if (redirect) {
+        return <Navigate to="/" />
+    }
 
     return (
         <div className="registration-page">
