@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { UserContext } from "../context/UserProvider";
+import { Navigate } from "react-router";
 
 function Registration() {
   // Using Context to get newly created obj
   const { users, setUsers } = useContext(UserContext);
-
+  // Enable to change user's page to login after creating an account
+  const [redirect, setRedirect] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -47,7 +49,12 @@ function Registration() {
       email: "",
       password: "",
     });
+    setRedirect(true);
   };
+
+  if (redirect) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="registration-page">
