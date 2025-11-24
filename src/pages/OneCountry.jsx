@@ -28,7 +28,7 @@ function OneCountry() {
 
     // Loads all countries once
     useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all")
+        fetch("https://restcountries.com/v3.1/all?fields=region,name,capital,population,currency,language,area,countrycode,timezone,demonym")
             .then((res) => res.json())
             .then(setAllCountries)
             .catch((err) => setError("Failed to load country list"));
@@ -121,6 +121,7 @@ function OneCountry() {
                     className="country-flag"
                 />
                 <div className="country-details">
+                    {/* https://restcountries.com/v3.1/all?fields=name,capital,population,currency,language,area,countrycode,timezone,demonym */}
                     <p><strong>Region:</strong> {country.region}</p>
                     <p>🏛 <strong>Capital:</strong> {country.capital?.[0] || "N/A"}</p>
                     <p>👥 <strong>Population:</strong> {country.population.toLocaleString()}</p>

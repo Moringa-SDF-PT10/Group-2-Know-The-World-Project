@@ -8,7 +8,7 @@ function App() {
   const [allCountries, setAllCountries] = useState([]);
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/all?fields=name,currencies,capital,region,subregion,languages,landlocked,area,maps,population,car,timezones,continents,flags,coatOfArms,latlng,unMember,borders,capitalInfo`)
+    fetch(`https://restcountries.com/v3.1/all?fields=name,capital,region,subregion,languages,area,continents,flags`)
       .then(resp => resp.json())
       .then(allCountriesArray => setAllCountries(allCountriesArray))
       .catch(error => console.log("SERVER ERROR", error))
