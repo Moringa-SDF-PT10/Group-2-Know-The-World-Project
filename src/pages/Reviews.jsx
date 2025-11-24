@@ -104,6 +104,7 @@ const Review = ({ countryName, onClose }) => {
   return (
     <div className="overlay">
       <div className="review-container">
+
         <h2 className="review-heading">Reviews for {countryName}</h2>
 
         {/* Reviews input area */}
